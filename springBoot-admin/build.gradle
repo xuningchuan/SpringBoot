@@ -1,6 +1,13 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
 }
+apply plugin: 'spring-boot'
+
 
 group 'com.xuningchuan'
 version '1.0-SNAPSHOT'
@@ -10,9 +17,9 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
-
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.9.RELEASE'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.14.6'
 
 }
