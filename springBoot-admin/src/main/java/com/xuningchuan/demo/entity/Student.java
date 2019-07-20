@@ -18,4 +18,9 @@ import lombok.experimental.Accessors;
 public class Student {
     String id;
     String name;
+
+    public static void main(String[] args) {
+        System.out.println("1");
+        System.out.println("1");
+    }
 }
