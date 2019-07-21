@@ -17,6 +17,7 @@ public class DemoController {
     public Student getStudent() {
         Student a = new Student();
         a.setId("1").setName("李明");
+        System.out.println("test02提交测试");
         return a;
     }
 }
