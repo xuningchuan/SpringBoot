@@ -1,2 +1,3 @@
 include 'springBoot-admin'
+include 'springBoot-mysql'
 
