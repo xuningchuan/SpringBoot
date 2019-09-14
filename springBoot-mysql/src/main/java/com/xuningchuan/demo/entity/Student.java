@@ -9,20 +9,18 @@ import lombok.experimental.Accessors;
  * @author xuningchuan
  * @Title: Student
  * @Description:
- * @date 2019/7/8下午9:00
+ * @date 2019/9/14下午6:40
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
 public class Student {
-    String id;
-    String name;
 
-    public static void main(String[] args) {
-        System.out.println("1");
-        System.out.println("2");
-        System.out.println("3");
-        System.out.println("test 01 第四次提交");
-    }
+    /** 学生Id*/
+    private String id;
+
+    /** 学生姓名*/
+    private String name;
+
 }

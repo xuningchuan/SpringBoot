@@ -1,0 +1,35 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
+}
+apply plugin: 'spring-boot'
+//apply plugin: 'war'
+//apply plugin: 'java'
+
+
+
+group = 'com.xuningchuan'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    //lombok
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.14.6'
+    //spring-boot-starter-web
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.9.RELEASE'
+    //spring-boot-mybatis
+    compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '1.3.2'
+    //mysql-jdbc
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.41'
+    //spting-boot-starter-test
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
