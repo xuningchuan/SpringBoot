@@ -1,0 +1,3 @@
+rootProject.name = 'SpringBoot'
+includeFlat 'springBoot-dubbo-api'
+
