@@ -1,0 +1,15 @@
+#springBoot 启动端口
+server:
+  port: 8085
+#dubbo
+dubbo:
+ application:
+   name: dubbo-producer  #dubbo的注册的服务名, 唯一性
+ scan:
+   base-package: com.example.demo.dubbo.provider
+ registry:
+   address: zookeeper://49.232.11.224:2181  #注册zookeeper的地址
+#   address: zookeeper://127.0.0.1:2181
+ protocol:
+   name: dubbo
+   port: 20880
