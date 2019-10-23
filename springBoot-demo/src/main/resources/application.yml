@@ -1,3 +1,8 @@
 #springBoot 启动端口
 server:
   port: 8081
+spring:
+  cache:
+    ehcache:
+      config: ehcache.xml
+    type: ehcache

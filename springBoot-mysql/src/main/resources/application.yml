@@ -14,3 +14,18 @@ mybatis:
   type-aliases-package: com.xuningchuan.demo.entity # 扫描数据持久对应的实体类 路径 Package级别
   mapper-locations: classpath:mapper/*.xml #  mybatis 对应的 .xml文件路径
 
+
+##多数据源配置练习 数据源 master yml 注入失败 ？
+#spring:
+#  datasource:
+#    master:
+#      url: jdbc:mysql://localhost:3306/mysql_master?characterEncoding=utf-8 #连接地址
+#      username: root  #用户名
+#      password: 123456 #密码
+##多数据源配置练习 数据源 slave
+#    slave:
+#      url: jdbc:mysql://localhost:3306/mysql_slave?characterEncoding=utf-8 #连接地址
+#      username: root  #用户名
+#      password: 123456 #密码
+
+

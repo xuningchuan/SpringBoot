@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.xuningchuan.demo.mapper.StudentMapper">
+<mapper namespace="com.xuningchuan.demo.mapper.mysql_master.MasterStuMapper">
 
     <resultMap id="Result" type="com.xuningchuan.demo.entity.Student">
         <id property="id" column="id" />

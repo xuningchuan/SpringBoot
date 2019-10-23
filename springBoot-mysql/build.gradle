@@ -7,8 +7,6 @@ buildscript {
     }
 }
 apply plugin: 'spring-boot'
-//apply plugin: 'war'
-//apply plugin: 'java'
 
 
 
@@ -32,4 +30,7 @@ dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.41'
     //spting-boot-starter-test
     testCompile 'org.springframework.boot:spring-boot-starter-test'
+    //aop
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '1.5.9.RELEASE'
+
 }

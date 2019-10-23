@@ -1,4 +1,4 @@
-package com.xuningchuan.demo.mapper;
+package com.xuningchuan.demo.mapper.mysql_dynamic;
 
 import com.xuningchuan.demo.entity.Student;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,6 +12,9 @@ import java.util.List;
  * @date 2019/9/14下午6:49
  */
 @Mapper
-public interface StudentMapper {
-    List<Student> getStudentList();
+public interface DynamicStuMapper {
+
+    List<Student> getStuFromMaster();
+
+    List<Student> getStuFromSlave();
 }
