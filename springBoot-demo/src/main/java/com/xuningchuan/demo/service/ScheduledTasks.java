@@ -2,7 +2,6 @@ package com.xuningchuan.demo.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
@@ -37,8 +36,10 @@ public class ScheduledTasks {
      */
     @Async
     public void async() throws InterruptedException {
-        log.info("#########.begin");
+        log.info("*********{}.begin", Thread.currentThread().getName());
         Thread.sleep(2000);
-        log.info("#########.end");
+        log.info("*********{}.end", Thread.currentThread().getName());
+        //throw new RuntimeException("test exception"); // 测试异步线程池捕获异常处理
     }
+
 }

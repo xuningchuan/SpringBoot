@@ -24,9 +24,11 @@ public class SpringDemoTest {
 
     @Test
     public void asyncTest() throws InterruptedException {
-        log.info("*********.begin");
-        scheduledTasks.async();
-        log.info("*********.end");
+        log.info("========={}.begin", Thread.currentThread().getName());
+        for(int i=0; i<20;i++){
+            scheduledTasks.async();
+        }
+        log.info("========={}.end", Thread.currentThread().getName());
         Thread.sleep(5000);
     }
 }
