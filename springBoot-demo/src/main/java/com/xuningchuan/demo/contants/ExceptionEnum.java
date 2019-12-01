@@ -13,7 +13,8 @@ import java.util.Map;
 public enum ExceptionEnum {
 
     SUCCESS("0000","成功"),
-    FAIL("0001","失败");
+    FAIL("0001","失败"),
+    UNKOWN_TYPE("0002","未知的类型");
 
 
 
