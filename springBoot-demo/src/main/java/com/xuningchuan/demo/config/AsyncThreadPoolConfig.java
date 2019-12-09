@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 public class AsyncThreadPoolConfig implements AsyncConfigurer {
 
     /**
-     * Description: 异步线程池
+     * Description: 异步线程池  当线程达到最大线程数时 后续线程进入阻塞队列 当阻塞队列塞满 执行线程池拒绝策略
      * @author xuningchuan[xu_nc@suixingpay.com>]
      * @param
      * @return

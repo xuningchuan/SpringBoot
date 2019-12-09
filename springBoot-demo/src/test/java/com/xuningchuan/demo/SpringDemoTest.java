@@ -1,6 +1,7 @@
 package com.xuningchuan.demo;
 
 import com.xuningchuan.demo.service.ScheduledTasks;
+import com.xuningchuan.demo.spring.ioc.lifecycle.ChinesePerson;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +23,16 @@ public class SpringDemoTest {
     @Autowired
     private ScheduledTasks scheduledTasks;
 
+    @Autowired
+    private ChinesePerson chinesePerson;
+
+    /**
+     * Description: 测试异步线程
+     * @author xuningchuan[xu_nc@suixingpay.com>]
+     * @param
+     * @return
+     * @date 2019/12/8 下午6:27
+     */
     @Test
     public void asyncTest() throws InterruptedException {
         log.info("========={}.begin", Thread.currentThread().getName());
@@ -30,5 +41,10 @@ public class SpringDemoTest {
         }
         log.info("========={}.end", Thread.currentThread().getName());
         Thread.sleep(5000);
+    }
+
+    @Test
+    public void beanLifeCycle(){
+        chinesePerson.animalService();
     }
 }
