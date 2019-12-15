@@ -17,13 +17,13 @@ public class BeanPostProcessorDemo implements BeanPostProcessor {
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        log.info("调用 BeanPostProcessor.postProcessBeforeInitialization,bean[{}],beanName[{}]", bean.getClass().getSimpleName(), beanName);
+//        log.info("调用 BeanPostProcessor.postProcessBeforeInitialization,bean[{}],beanName[{}]", bean.getClass().getSimpleName(), beanName);
         return bean;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        log.info("调用 BeanPostProcessor.postProcessAfterInitialization,bean[{}],beanName[{}]", bean.getClass().getSimpleName(), beanName);
+//        log.info("调用 BeanPostProcessor.postProcessAfterInitialization,bean[{}],beanName[{}]", bean.getClass().getSimpleName(), beanName);
         return bean;
     }
 }
