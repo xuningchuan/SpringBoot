@@ -9,6 +9,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author xuningchuan
@@ -25,7 +27,7 @@ public class ThreadMain {
      * @return
      * @date 2020-03-01 17:49
      */
-    public static void main(String[] args) throws Exception {
+    public static void main1(String[] args) throws Exception {
 //        //1.继承 Thread
 //        Thread threadInheritA = new ThreadInherit("extends A");
 //        Thread threadInheritB = new ThreadInherit("extends B");
@@ -71,5 +73,36 @@ public class ThreadMain {
             System.out.println(it.get());
         }
         executorService.shutdown();
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        ReentrantLock lock = new ReentrantLock();
+          lock.lock();
+          lock.lock();
+          System.out.println(lock.getHoldCount());
+          lock.unlock();
+         System.out.println(lock.getHoldCount());
+          lock.unlock();
+
+//        AtomicInteger integer = new AtomicInteger(0);
+//        integer.getAndIncrement();
+//        Atomic atomic = new ThreadMain().new Atomic();
+//        for (int j = 0; j < 10; j++) {
+////            Thread.sleep(1000);
+//            new Thread(atomic).start();
+//        }
+    }
+
+    class Atomic implements Runnable{
+          AtomicInteger integer = new AtomicInteger(0);
+          volatile int i = 0;
+
+
+        @Override
+        public void run() {
+//            System.out.println(Thread.currentThread().getName() + "====" + integer.addAndGet(1));
+            System.out.println(Thread.currentThread().getName() + "====" + ++i);
+
+        }
     }
 }

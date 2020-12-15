@@ -36,5 +36,7 @@ dependencies {
     compile group: 'commons-io', name: 'commons-io', version: '1.2'
     //commons-lang3
     compile('org.apache.commons:commons-lang3:3.4')
+    //spring-boot-starter-aop
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '1.5.9.RELEASE'
     
 }

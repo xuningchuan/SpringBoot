@@ -49,10 +49,7 @@ public class ProxyBeanFactory {
 
 
          // 2.具体实现抽离出来
-        Object proxyInstance = Proxy.newProxyInstance(target.getClass().getClassLoader(),
-            target.getClass().getInterfaces(),
-            new ProxyBean(target, interceptor));
-        return proxyInstance;
+        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), new ProxyBean(target, interceptor));
 
     }
 

@@ -18,6 +18,7 @@ public class AopProxyDemo {
          * @date 2019/12/15 下午4:55
          */
         public static void main(String[] args) {
+            //JDK 动态代理
             Interceptor interceptor = new MyInterceptor();
             HelloAopService target = new HelloAopServiceImpl();
             HelloAopService proxyInstance = (HelloAopService)ProxyBeanFactory.getProxyBean(target, interceptor);

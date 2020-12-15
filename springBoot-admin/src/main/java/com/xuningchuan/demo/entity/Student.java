@@ -16,13 +16,32 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class Student {
-    String id;
-    String name;
+    String name = testPt();
+    String id =testStatic();
 
+
+    static {
+        System.out.println("static 代码块");
+    }
+
+    {
+        System.out.println("代码块");
+    }
+    static String testStatic(){
+        System.out.println("static 初始化变量");
+
+        return "qq";
+    }
+     String testPt(){
+         System.out.println("初始化变量");
+        return "qq";
+    }
     public static void main(String[] args) {
-        System.out.println("1");
-        System.out.println("2");
-        System.out.println("3");
-        System.out.println("test 01 第四次提交");
+//        System.out.println("1");
+//        System.out.println("2");
+//        System.out.println("3");
+//        System.out.println("test 01 第四次提交");
+        System.out.println("-----");
+        Student student = new Student();
     }
 }

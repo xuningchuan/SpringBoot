@@ -18,9 +18,9 @@ import java.lang.reflect.Method;
 @NoArgsConstructor
 public class ProxyBean implements InvocationHandler {
 
-    private Object target = null;
+    private Object target;
 
-    private Interceptor interceptor = null;
+    private Interceptor interceptor;
 
     /**
      * Description: 处理代理方法的逻辑

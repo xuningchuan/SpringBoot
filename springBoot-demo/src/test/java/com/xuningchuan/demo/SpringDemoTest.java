@@ -3,6 +3,7 @@ package com.xuningchuan.demo;
 import com.xuningchuan.demo.service.ScheduledTasks;
 import com.xuningchuan.demo.spring.aop.AspectAopService;
 import com.xuningchuan.demo.spring.aop.AspectAopServiceCGLB;
+import com.xuningchuan.demo.spring.aop.AspectAopServiceCGLBParent;
 import com.xuningchuan.demo.spring.aop.AspectAopServiceImpl;
 import com.xuningchuan.demo.spring.ioc.lifecycle.ChinesePerson;
 import lombok.extern.slf4j.Slf4j;
@@ -81,9 +82,15 @@ public class SpringDemoTest {
      * @return
      * @date 2019/12/15 下午7:04
      */
+    @Autowired
+    private AspectAopServiceCGLBParent aspectAopServiceCGLBParent;
+
     @Test
     public void testCGLIBAop(){
+//        aspectAopServiceCGLBParent.helloAspectAop("sss");
         aspectAopServiceCGLB.helloAspectAop("Aspect AOP CGLIB");
+        aspectAopServiceCGLB.helloAspectAop11(new AspectAopServiceCGLB());
+
     }
 
 }

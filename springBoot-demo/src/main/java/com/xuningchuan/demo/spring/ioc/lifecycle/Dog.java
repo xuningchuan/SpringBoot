@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-@Primary
+//@Primary
 public class Dog implements Animal {
 
     @Override

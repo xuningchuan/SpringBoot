@@ -26,7 +26,7 @@ public class JDKAspect {
 
     }
 
-    @Before("pointCut() && args(str))")
+    @Before("pointCut() && args(str)")
     public void before(String str){
         System.out.println("before 输入参数:" + str);
     }

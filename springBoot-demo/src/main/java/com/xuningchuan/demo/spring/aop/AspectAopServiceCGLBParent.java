@@ -12,10 +12,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @AopAnno
-public class AspectAopServiceCGLB implements AopCglibInterface{
-
-
-//    @AopAnno
+public class AspectAopServiceCGLBParent {
+    //    @AopAnno
     public void helloAspectAop(String str) {
         if(StringUtils.isBlank(str)){
             throw new RuntimeException("aspect aop str is null !!!");
@@ -23,12 +21,4 @@ public class AspectAopServiceCGLB implements AopCglibInterface{
         System.out.println("hello aspect aop:" + str);
     }
 
-//    @AopAnno
-    public void helloAspectAop11(AspectAopServiceCGLB aspectAopServiceCGLB) {
-        String str = "jia jing wen";
-        if(StringUtils.isBlank(str)){
-            throw new RuntimeException("aspect aop str is null !!!");
-        }
-        System.out.println("hello aspect aop11:" + str);
-    }
 }

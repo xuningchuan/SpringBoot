@@ -1,7 +1,10 @@
 package com.xuningchuan.demo.spring.ioc.lifecycle;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.BeanNameAware;
@@ -9,6 +12,7 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.beans.PropertyDescriptor;
 
 /**
  * @author xuningchuan
@@ -25,17 +30,22 @@ import javax.annotation.PreDestroy;
  */
 @Component
 @Slf4j
+@AllArgsConstructor
 public class ChinesePerson implements Person, BeanNameAware, BeanFactoryAware, ApplicationContextAware, InitializingBean, DisposableBean {
 
 
-    private Animal animal;
+    public ChinesePerson() {
+        log.info("=====实例化bean[{}]", this.getClass().getSimpleName());
+    }
+
+//    @Autowired
+//    @Qualifier
+    public Animal animal;
 
     @Autowired //根据类型获取bean
-    @Qualifier("dog") // 根据名称获取bean
-    @Override
-    public void setAnimal(Animal animal) {
-        log.info("=====注入依赖[{}]", animal.getClass().getSimpleName());
-        this.animal = animal;
+    public void setAnimal(Animal dog) {
+        this.animal = dog;
+        log.info("=====设置属性值,注入依赖[{}]", animal.getClass().getSimpleName());
     }
 
     @Override
@@ -44,7 +54,7 @@ public class ChinesePerson implements Person, BeanNameAware, BeanFactoryAware, A
     }
 
 
-    /* bean 声明周期顺序 1.setBeanName
+    /* bean 生命周期顺序 1.setBeanName
                        2.setBeanFactory
                        3.setApplicationContext
                        4.postProcessBeforeInitialization
@@ -55,6 +65,14 @@ public class ChinesePerson implements Person, BeanNameAware, BeanFactoryAware, A
                        9.自定义销毁方法
                        10.destroy
 
+
+                       实例化bean
+
+                       设置属性值
+
+                       初始化bean
+
+                       销毁bean
      */
     @Override
     public void setBeanName(String name) {
@@ -77,6 +95,7 @@ public class ChinesePerson implements Person, BeanNameAware, BeanFactoryAware, A
         log.info("=====[{}]调用@PostConstruct修饰的方法", this.getClass().getSimpleName());
     }
 
+
     @Override
     public void afterPropertiesSet() throws Exception {
         log.info("=====[{}]调用InitializingBean.afterPropertiesSet", this.getClass().getSimpleName());
@@ -92,8 +111,5 @@ public class ChinesePerson implements Person, BeanNameAware, BeanFactoryAware, A
         log.info("=====[{}]调用DisposableBean.destroy的方法", this.getClass().getSimpleName());
 
     }
-
-
-
 
 }

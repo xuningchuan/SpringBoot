@@ -1,7 +1,9 @@
 package com.xuningchuan.demo.config;
 
+import com.xuningchuan.demo.spring.ioc.lifecycle.Cat;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -12,6 +14,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -92,27 +95,31 @@ public class AsyncThreadPoolConfig implements AsyncConfigurer {
         int corePoolSize = 2;
         int maximumPoolSize = 5;
         long keepAliveTime = 5;
-        BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<>(1);
+        BlockingQueue<Integer> workQueue = new SynchronousQueue<>();
+        workQueue.offer(1);
+        workQueue.offer(2);
 
-        //拒绝策略--调用方运行策略
-        RejectedExecutionHandler handler1 = new ThreadPoolExecutor.CallerRunsPolicy();
-        //拒绝策略--丢弃任务 并抛出拒绝执行 RejectedExecutionException 异常信息。线程池默认的拒绝策略。
-        RejectedExecutionHandler handler2 = new ThreadPoolExecutor.AbortPolicy();
-        //拒绝策略--直接丢弃
-        RejectedExecutionHandler handler3 = new ThreadPoolExecutor.DiscardPolicy();
-        //拒绝策略--丢弃阻塞
-        RejectedExecutionHandler handler4 = new ThreadPoolExecutor.DiscardOldestPolicy();
+        System.out.println(workQueue.size());
 
-
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, TimeUnit.SECONDS, workQueue, handler4);
-        for(int i=0; i<20; i++) {
-            try {
-                executor.execute(new Thread(() -> log.info(Thread.currentThread().getName() + " is running")));
-            } catch (Exception e) {
-                log.error(e.getMessage());
-            }
-        }
-        executor.shutdown();
+//        //拒绝策略--调用方运行策略
+//        RejectedExecutionHandler handler1 = new ThreadPoolExecutor.CallerRunsPolicy();
+//        //拒绝策略--丢弃任务 并抛出拒绝执行 RejectedExecutionException 异常信息。线程池默认的拒绝策略。
+//        RejectedExecutionHandler handler2 = new ThreadPoolExecutor.AbortPolicy();
+//        //拒绝策略--直接丢弃
+//        RejectedExecutionHandler handler3 = new ThreadPoolExecutor.DiscardPolicy();
+//        //拒绝策略--丢弃阻塞
+//        RejectedExecutionHandler handler4 = new ThreadPoolExecutor.DiscardOldestPolicy();
+//
+//
+//        ThreadPoolExecutor executor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, TimeUnit.SECONDS, workQueue, handler4);
+//        for(int i=0; i<20; i++) {
+//            try {
+//                executor.execute(() -> log.info(Thread.currentThread().getName() + " is running"));
+//            } catch (Exception e) {
+//                log.error(e.getMessage());
+//            }
+//        }
+//        executor.shutdown();
     }
 
 }
