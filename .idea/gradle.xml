@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/springBoot-dubbo-consumer" />
             <option value="$PROJECT_DIR$/springBoot-dubbo-provider" />
             <option value="$PROJECT_DIR$/springBoot-mysql" />
+            <option value="$PROJECT_DIR$/springBoot-test" />
           </set>
         </option>
         <option name="useQualifiedModuleNames" value="true" />

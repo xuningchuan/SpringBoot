@@ -13,13 +13,7 @@ public class DataSourceType {
         master, slave
     }
 
-    private static final ThreadLocal<DataBaseType> DATA_BASE_TYPE_THREAD_LOCAL = new ThreadLocal<DataBaseType>() {
-
-        @Override
-        protected DataBaseType initialValue() {
-            return DataBaseType.master;
-        }
-    };
+    private static final ThreadLocal<DataBaseType> DATA_BASE_TYPE_THREAD_LOCAL = ThreadLocal.withInitial(() -> DataBaseType.master);
 
     public static void setDataBaseTypeThreadLocal(DataBaseType dataBaseType) {
         DATA_BASE_TYPE_THREAD_LOCAL.set(dataBaseType);

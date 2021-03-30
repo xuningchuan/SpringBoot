@@ -4,6 +4,8 @@ include 'springBoot-mysql'
 include 'springBoot-dubbo-api'
 include 'springBoot-dubbo-provider'
 include 'springBoot-dubbo-consumer'
+include 'springBoot-test'
+
 
 
 

@@ -1,0 +1,28 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
+}
+apply plugin: 'spring-boot'
+
+
+group 'com.xuningchuan'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+dependencies {
+    //spring-boot-starter-web
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.9.RELEASE'
+    //lombok
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.14.6'
+    //spring-boot-starter-test
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+}

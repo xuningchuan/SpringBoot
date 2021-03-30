@@ -1,5 +1,7 @@
 package com.xuningchuan.demo.thread;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @author xuningchuan
  * @Title: Sync
@@ -9,17 +11,19 @@ package com.xuningchuan.demo.thread;
 public class Sync {
 
      static volatile int  j = 3;
+     static ReentrantLock lock = new ReentrantLock();
 
     public static void main(String[] args) {
         int  i = 1;
-//        int j = 2;
         int c = i + j;
+        lock.lock();
         System.out.println(c);
+        lock.unlock();
         new Sync().testSync();
     }
 
-    public synchronized   void  testSync (){
-        synchronized (this){
+   public static synchronized void testSync() {
+        synchronized (Sync.class){
             System.out.println("aa");
 
         }
